@@ -246,10 +246,11 @@ int GPS_Handler::parseLongitude(char *lonBuffer, uint length, char dir, float *l
   }
   //so now we parse to decimal format
   //first two 'digits' are correct (degrees)
-  parsedLongitude += 10*(lonBuffer[0] - '0');
-  parsedLongitude += (lonBuffer[1] - '0');
+  parsedLongitude += 100*(lonBuffer[0] - '0');
+  parsedLongitude += 10(lonBuffer[1] - '0');
+  parsedLongitude += (lonBuffer[2] - '0');
   //the rest is in minutes format
-  float temp = atof(&num[2]);
+  float temp = atof(&num[3]);
   parsedLongitude += 1.0/60.0*temp;
   if(dir == 'W') parsedLongitude *=-1;
   *longitude = parsedLongitude;

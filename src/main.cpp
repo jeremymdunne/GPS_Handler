@@ -5,7 +5,6 @@
 GPS_Handler gps;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   Serial2.begin(9600);
   gps.init(&Serial2);
@@ -21,7 +20,6 @@ void setup() {
 bool previousState = true;
 
 void loop() {
-  // put your main code here, to run repeatedly:
   gps.update();
   if(gps.isConnected() != previousState){
     if(gps.isConnected()) Serial.println("Connection reestablished!");
